@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JJeff Development LLC — Software & Automation Engineering</title>
+<meta name="description" content="JJeff Development LLC builds custom software, mobile apps, and automation tooling for teams that need production-grade systems delivered reliably.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231e3a5f'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='30' font-weight='700' fill='%23d97b3f' text-anchor='middle'%3E%3E%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top"><span class="brand-prompt">&gt;</span>jjeff development<span class="brand-cursor"></span></a>
+    <nav class="nav">
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Software &amp; Automation Engineering</p>
+      <h1>We build software that holds up in production.</h1>
+      <p class="lede">
+        JJeff Development LLC designs and builds custom applications and automation
+        tooling for teams that need things done right the first time — from mobile
+        apps to the infrastructure automation that keeps large networks running.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Start a project</a>
+        <a class="btn btn-ghost" href="#services">See services</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <div class="wrap">
+      <h2>What we do</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h3>App Development</h3>
+          <p>Native and cross-platform mobile &amp; web applications, built from
+          concept through production release and ongoing support.</p>
+        </div>
+        <div class="card">
+          <h3>Automation &amp; Tooling</h3>
+          <p>Python-based automation, internal tooling, and SDKs that remove
+          manual work from engineering and operations teams.</p>
+        </div>
+        <div class="card">
+          <h3>Integration &amp; APIs</h3>
+          <p>RESTful API design and third-party integrations that connect
+          existing systems without adding fragility.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section alt">
+    <div class="wrap">
+      <h2>Upcoming projects</h2>
+      <p class="section-lede">A couple of things currently in development.</p>
+      <div class="grid-2">
+        <div class="card project-card">
+          <img class="project-icon" src="assets/projects/fitdive-icon.png" alt="">
+          <div>
+            <h3>Dive log converter/importer</h3>
+            <p>A tool for pulling dive computer data into your logbook of
+            choice automatically.</p>
+          </div>
+        </div>
+        <div class="card project-card">
+          <img class="project-icon" src="assets/projects/skyscore-icon.png" alt="">
+          <div>
+            <h3>Astronomy forecasting app</h3>
+            <p>A stargazing conditions app that scores how good a night will
+            be at your saved locations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="wrap">
+      <h2>About</h2>
+      <p>
+        JJeff Development LLC is founded by <strong>Justin Jeffery</strong>, a
+        software and automation engineer with a background designing and
+        building production systems and developer tooling for enterprise
+        clients. JJeff Development applies that same discipline — clear scope,
+        reliable delivery, code that's built to be maintained — to custom
+        software and app development work.
+      </p>
+    </div>
+  </section>
+
+  <section id="contact" class="section alt">
+    <div class="wrap contact-grid">
+      <div>
+        <h2>Get in touch</h2>
+        <p>
+          Tell us about the project — app, internal tool, or automation work —
+          and we'll follow up.
+        </p>
+        <p class="fineprint">
+          Prefer LinkedIn? Connect at
+          <a href="https://www.linkedin.com/in/justin-jeffery/" target="_blank" rel="noopener">linkedin.com/in/justin-jeffery</a>.
+        </p>
+      </div>
+      <form id="contact-form" class="contact-form">
+        <div data-fs-success></div>
+        <div data-fs-error></div>
+        <label>
+          Name
+          <input type="text" name="name" data-fs-field required>
+        </label>
+        <span data-fs-error="name"></span>
+        <label>
+          Email
+          <input type="email" name="email" data-fs-field required>
+        </label>
+        <span data-fs-error="email"></span>
+        <label>
+          What are you looking to build?
+          <textarea name="message" rows="5" data-fs-field required></textarea>
+        </label>
+        <span data-fs-error="message"></span>
+        <button type="submit" class="btn btn-primary" data-fs-submit-btn>Send</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span>&copy; <span id="year"></span> JJeff Development LLC. All rights reserved.</span>
+    <span class="footer-location">Cleveland, Ohio</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: '#contact-form', formId: 'mppznbpb' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+</body>
+</html>
