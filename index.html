@@ -68,17 +68,26 @@
 
   <section id="projects" class="section alt">
     <div class="wrap">
-      <h2>Upcoming projects</h2>
-      <p class="section-lede">A couple of things currently in development.</p>
-      <div class="grid-2">
-        <div class="card project-card">
-          <img class="project-icon" src="assets/projects/fitdive-icon.png" alt="">
-          <div>
-            <h3>Dive log converter/importer</h3>
-            <p>A tool for pulling dive computer data into your logbook of
-            choice automatically.</p>
+      <h2>Projects</h2>
+      <p class="section-lede">Live work, plus what's next.</p>
+
+      <div class="showcase-card" id="fitdive-showcase">
+        <img class="showcase-shot" id="fitdive-showcase-img" src="assets/projects/fitdive-shot.jpg" alt="FitDive automatically matching a Garmin dive to a real dive site">
+        <div class="showcase-body">
+          <span class="status-pill status-shipped" id="fitdive-showcase-status">Shipped</span>
+          <h3 id="fitdive-showcase-name">FitDive</h3>
+          <p id="fitdive-showcase-desc">Reads a Garmin dive computer's <code>.fit</code> file and logs the
+          dive straight into a diver's MySSI e-logbook — dive site, depth,
+          time, temperature, and gas filled in automatically. Live on the
+          App Store.</p>
+          <div class="showcase-actions">
+            <a class="btn btn-primary" id="fitdive-showcase-link" href="https://fitdive.app" target="_blank" rel="noopener">Visit fitdive.app ↗</a>
           </div>
         </div>
+      </div>
+
+      <h3 class="section-subhead">In development</h3>
+      <div class="grid-2 grid-single">
         <div class="card project-card">
           <img class="project-icon" src="assets/projects/skyscore-icon.png" alt="">
           <div>
@@ -157,5 +166,43 @@
   formspree('initForm', { formElement: '#contact-form', formId: 'mppznbpb' });
 </script>
 <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+<script>
+  // FitDive's own repo publishes assets/showcase.json - keeping this card in
+  // sync there means it never needs a matching edit in this repo. The card
+  // above is left fully written out as the fallback: any failure here (the
+  // fetch, a missing field, a broken image) just leaves it as-is.
+  fetch('https://fitdive.app/assets/showcase.json')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) {
+      if (!d || typeof d !== 'object') return;
+      if (typeof d.image === 'string') {
+        var preload = new Image();
+        preload.onload = function () {
+          var img = document.getElementById('fitdive-showcase-img');
+          if (img) {
+            img.src = d.image;
+            if (typeof d.imageAlt === 'string') img.alt = d.imageAlt;
+          }
+        };
+        preload.src = d.image;
+      }
+      var fields = {
+        status: 'fitdive-showcase-status',
+        name: 'fitdive-showcase-name',
+        description: 'fitdive-showcase-desc',
+      };
+      Object.keys(fields).forEach(function (key) {
+        if (typeof d[key] !== 'string') return;
+        var el = document.getElementById(fields[key]);
+        if (el) el.textContent = d[key];
+      });
+      if (typeof d.url === 'string') {
+        var link = document.getElementById('fitdive-showcase-link');
+        if (link) link.href = d.url;
+      }
+    })
+    .catch(function () { /* keep the static fallback card above */ });
+</script>
 </body>
 </html>
